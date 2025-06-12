@@ -2,8 +2,9 @@ package pkg
 
 // Produto representa um item com nome e preço
 type Produto struct {
-	Nome  string
-	Preco float64
+	ID    int     `json:"id,omitempty"`
+	Nome  string  `json:"nome"`
+	Preco float64 `json:"preco"`
 }
 
 // NovoProduto é um "construtor" idiomático
