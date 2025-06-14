@@ -60,3 +60,33 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 7️⃣ Testes & Erros  → `error`, `testing`
 8️⃣ Banco de Dados  → `sql`, persistência
 9️⃣ Boas práticas   → Formatadores, linter, build
+
+
+
+## CURL PARA API:
+
+GET
+```
+   curl -X GET http://localhost:8080/usuarios
+```
+
+POST
+```
+   curl -X POST http://localhost:8080/usuarios \
+  -H "Content-Type: application/json" \
+  -d '{"nome": "Ana Silva", "email": "ana@email.com"}'
+```
+
+PUT
+```
+   curl -X PUT http://localhost:8080/usuarios \
+  -H "Content-Type: application/json" \
+  -d '{"id": 1, "nome": "Ana Atualizada", "email": "ana@novoemail.com"}'
+```
+
+DELETE
+```
+   curl -X DELETE http://localhost:8080/usuarios \
+  -H "Content-Type: application/json" \
+  -d '{"id": 1}'
+```

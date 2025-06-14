@@ -1,28 +1,28 @@
 package main
 
 import (
-	"fmt"
 	"log"
-	"net/http"
-
 	"my-go-project/internal"
+	"net/http"
 )
 
 func main() {
-	// Conecta com o banco de dados
 	internal.Conectar()
 
-	http.HandleFunc("/produtos", func(w http.ResponseWriter, r *http.Request) {
-		// Diferencia o tipo de metodo HTTP recebido
+	http.HandleFunc("/usuarios", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodGet {
-			internal.ListarProdutos(w, r)
+			internal.ListarUsuariosHandler(w, r)
 		} else if r.Method == http.MethodPost {
-			internal.CriarProduto(w, r)
+			internal.CriarUsuarioHandler(w, r)
+		} else if r.Method == http.MethodPut {
+			internal.AtualizarUsuarioHandler(w, r)
+		} else if r.Method == http.MethodDelete {
+			internal.DeletarUsuarioHandler(w, r)
 		} else {
-			http.Error(w, "Método não suportado", http.StatusMethodNotAllowed)
+			http.Error(w, "Método não permitido", http.StatusMethodNotAllowed)
 		}
 	})
 
-	fmt.Println("Servidor rodando em http://localhost:8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Println("Servidor rodando em http://localhost:8080")
+	http.ListenAndServe(":8080", nil)
 }
